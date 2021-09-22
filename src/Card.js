@@ -1,14 +1,14 @@
 import React from "react";
 import './Card.css';
 
-const Card =(props)=> {
+const Card =({card})=> {
     return(
         <div className="cardContainer">
             <div className="front">
-                <div className="deutsch">{props.deu}</div>
+                <div className="deutsch">{card.deu}</div>
             </div>
             <div className="back">
-                <div className="english">{props.eng}</div>
+                <div className="english">{card.eng}</div>
             </div>
         </div>
     )
