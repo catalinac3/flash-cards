@@ -1,15 +1,9 @@
-import { AppBar, Toolbar } from "@mui/material";
 import * as React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { useHistory } from "react-router";
+import { AppBar, Toolbar,Typography, IconButton,Menu,MenuItem,Button } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useHistory } from "react-router-dom";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Button from "@mui/material/Button";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   // This group of buttons will be aligned to the right
@@ -46,7 +40,7 @@ function Navbar() {
     <div>
       <AppBar position="static" style={{ background: "#2E3B55" }}>
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography align="left" variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Cards
           </Typography>
           <section className={classes.rightToolbar}>

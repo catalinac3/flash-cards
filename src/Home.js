@@ -6,19 +6,31 @@ import Button from "./Button";
 import { app } from "./configFirebase";
 import { getFirestore } from "firebase/firestore";
 import { collection, onSnapshot } from "firebase/firestore";
-import { Navbar } from "./Navbar";
-// creation of the firestore database object
+import { addToDB, getCards } from "./Utility";
+
 const db = getFirestore();
 
 function Home() {
+  const db = getFirestore();
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentCard, setCurrentCard] = useState(undefined);
 
-  /**
-   * reads data from DB, updates on data trigger changes on the cards
-   * one time getting the data
-   */
+  //------- to use, when data needs to be added to the app ----
+  // useEffect(() => {
+  //   addToDB();
+  // }, []);
+  //------- end to use, when data needs to be added to the app ----
+
+  //------- to use, when data needs to be read it just at mounting the app ----
+  // useEffect(() => {
+  //   getCards().then((cardsFromDB) => {
+  //     setCards(cardsFromDB);
+  //     setLoading(false);
+  //   });
+  // }, []);
+  //------- end to use, when data needs to be read it just at mounting the app----
+
   function getCardsLisener() {
     let cardsFromDB = [];
     const verbRef = collection(db, "verbs");
