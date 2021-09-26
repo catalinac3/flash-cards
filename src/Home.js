@@ -6,7 +6,7 @@ import Button from "./Button";
 import { app } from "./configFirebase";
 import { getFirestore } from "firebase/firestore";
 import { collection, onSnapshot } from "firebase/firestore";
-import { addToDB, getCards } from "./Utility";
+import { addToDB, getCards, addToDoc, deletesDocu, queryTrial } from "./Utility";
 
 const db = getFirestore();
 
@@ -75,6 +75,18 @@ function Home() {
     setCurrentCard(update);
   }
 
+  function addExtraInfo() {
+    addToDoc();
+  }
+
+  function deleteDoc() {
+    deletesDocu();
+  }
+
+  function searchDocs() {
+    queryTrial();
+  }
+
   if (loading || !currentCard) {
     return (
       <div className="App">
@@ -87,7 +99,16 @@ function Home() {
     <div className="App">
       <h1>Flash cards</h1>
       <Card card={currentCard} />
-      <Button updateCard={updateCard} />
+      <Button click={updateCard}> New Card </Button>
+      <div>
+        <Button click={addExtraInfo}> AddExtraInfo </Button>
+      </div>
+      <div>
+        <Button click={deleteDoc}> Delete doc </Button>
+      </div>
+      <div>
+        <Button click={searchDocs}> Search docs </Button>
+      </div>
     </div>
   );
 }
