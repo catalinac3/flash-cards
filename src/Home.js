@@ -1,6 +1,6 @@
 import "./Home.css";
 import React, { useState, useEffect } from "react";
-import Card from "./Card";
+import FlashCard from "./FlashCard";
 import Button from "./Button";
 // cloud Firestore
 import { app } from "./configFirebase";
@@ -98,7 +98,7 @@ function Home() {
   return (
     <div className="App">
       <h1>Flash cards</h1>
-      <Card card={currentCard} />
+      <FlashCard card={currentCard} />
       <Button click={updateCard}> New Card </Button>
       <div>
         <Button click={addExtraInfo}> AddExtraInfo </Button>

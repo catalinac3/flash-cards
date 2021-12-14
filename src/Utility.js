@@ -8,6 +8,8 @@ import {
   deleteDoc,
   query,
   where,
+  orderBy,
+  limit,
 } from "firebase/firestore";
 
 // creation of the firestore database object
@@ -78,12 +80,13 @@ export async function deletesDocu() {
 export async function queryTrial() {
   let results = [];
   const verbRef = collection(db, "verbs");
-  const q = query(verbRef, where("contains", "array-contains", "eng"));
+  const q = query(verbRef, orderBy("deu"));
+  //limit(3)
+  // where("contains", "array-contains", "deu")
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
     results.push(doc.data());
-    
   });
   console.log("result of the QUERY");
   console.log(results);
