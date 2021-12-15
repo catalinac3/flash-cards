@@ -1,14 +1,18 @@
-import React, { useState } from "react";
-import "./Card.css";
+import React, { useState, useEffect } from "react";
 import { CardActionArea, Card, Typography } from "@mui/material";
 
-const FlashCard = ({ currentCard, show }) => {
-  console.log("render flashcard");
-  const [cardSide, setCardSide] = useState(show);
+const FlashCard = ({ currentCard }) => {
+  const [cardSide, setCardSide] = useState("front");
   console.log(cardSide);
 
+  // everytime current card changes
+  // front side of the card gets displayed
+  useEffect(() => {
+    setCardSide("front");
+  }, [currentCard]);
+
   /**
-   * Toogle the card
+   * Toogle card side
    */
   function toogleCard() {
     cardSide === "front" ? setCardSide("back") : setCardSide("front");
@@ -18,7 +22,15 @@ const FlashCard = ({ currentCard, show }) => {
       onClick={toogleCard}
       sx={{ width: "fit-content", height: "fit-content", margin: "20px auto" }}
     >
-      <Card sx={{ maxWidth: "300px", maxHeight: "200px", padding: "20px" }}>
+      <Card
+        sx={{
+          width: "300px",
+          height: "100px",
+          padding: "20px",
+          background:
+            cardSide === "front" ? "rgb(210, 227, 252, 0.5)" : "white",
+        }}
+      >
         {cardSide === "front" ? (
           <Typography variant="body1">{currentCard.deu}</Typography>
         ) : (
