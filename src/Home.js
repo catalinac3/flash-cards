@@ -4,13 +4,14 @@ import "./Home.css";
 // cloud Firestore
 import { app } from "./configFirebase";
 import { getFirestore } from "firebase/firestore";
+
 import { collection, onSnapshot } from "firebase/firestore";
 import { Button, CircularProgress } from "@mui/material";
 
-const db = getFirestore();
 
+const db = getFirestore();
 function Home() {
-  const db = getFirestore();
+ 
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentCard, setCurrentCard] = useState(undefined);
